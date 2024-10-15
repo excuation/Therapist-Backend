@@ -8,6 +8,26 @@ require('dotenv').config();  // Use dotenv for environment variables
 const cookieParser = require('cookie-parser');
 const app = express();
 
+const cors = require('cors');
+
+// Add your new frontend deploy URL to allowed origins
+const allowedOrigins = [
+  'http://localhost:5173', 
+  'https://therapist-frontendcopy2.onrender.com'  // Add this new frontend URL
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,  // Include this if you send cookies or authorization headers
+};
+
+app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
