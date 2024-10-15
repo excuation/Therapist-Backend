@@ -7,23 +7,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config();  // Use dotenv for environment variables
 const cookieParser = require('cookie-parser');
 const app = express();
-const cors = require('cors');
 
-// Allow requests from the deployed frontend
-const allowedOrigins = ['http://localhost:5173', 'https://therapist-frontend.onrender.com'];
-
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true, // If you're sending cookies or authorization headers
-};
-
-app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
