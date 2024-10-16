@@ -11,6 +11,7 @@ const app = express();
 const cors = require('cors');
 
 // Add your new frontend deploy URL to allowed origins
+
 const allowedOrigins = [
   'http://localhost:5173', 
   'https://therapist-frontendcopy2.onrender.com'  // Add this new frontend URL
