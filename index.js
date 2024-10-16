@@ -43,7 +43,7 @@ app.use('/api', therapistRoutes);
 
 const historyRoutes = require('./routes/history');
 app.use('/api/history', historyRoutes);
-
+app.use('/api/users', authRoutes); 
 
 
 // 404 Catch-All
